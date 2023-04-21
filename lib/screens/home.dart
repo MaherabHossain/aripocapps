@@ -57,15 +57,15 @@ class _HomePageState extends State<HomePage> {
   Widget _radialListItem(double angle, int index) {
     final x = cos(angle) * radius;
     final y = sin(angle) * radius;
-    List<String> content = [
-      "image",
-      "star",
-      "The 5 Principle",
-      "Earth Salvations",
-      "Divine    prophecies of prophet ",
-      "Warnings from prophet",
-      "101 question",
-      "The Holy Koran ",
+    List<dynamic> content = [
+      ["images"],
+      ["star"],
+      ["The 5", "Principles"],
+      ["The", "Divine", "Constitution", "And", "By-Laws"],
+      ["The", "Moorish", "American", "Prayer"],
+      ["The", "Warnings", "From", "Prophet"],
+      ["The", "Koran", "Questionnaire"],
+      ["The Holy", "Koran"],
     ];
     return Center(
       child: Transform(
@@ -73,24 +73,23 @@ class _HomePageState extends State<HomePage> {
             ? Matrix4.translationValues(0.0, 0.0, 0.0)
             : Matrix4.translationValues(x, y, 0.0),
         child: Container(
-          height: index == 1 ? 140 : 80,
-          width: index == 1 ? 140 : 80,
+          height: index == 1 ? 170 : 63,
+          width: index == 1 ? 170 : 63,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              color:
-                  index != 1 ? Color.fromARGB(255, 210, 21, 7) : Colors.white),
+            borderRadius: BorderRadius.circular(50),
+            color: index != 1
+                ? index == 2
+                    ? Colors.grey
+                    : Color.fromARGB(255, 25, 162, 30)
+                : Color.fromARGB(255, 195, 47, 36),
+          ),
           child: index == 1
-              ? ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image.asset(
-                    "assets/drew_ali.jpeg",
-                    height: 140,
-                    width: 140,
-                  ),
+              ? CircleAvatar(
+                  backgroundImage: AssetImage("assets/drew_ali.jpeg"),
                 )
               : index == 2
                   ? ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(60),
                       child: Image.asset(
                         "assets/star.png",
                         height: 80,
@@ -98,14 +97,23 @@ class _HomePageState extends State<HomePage> {
                       ),
                     )
                   : Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: const EdgeInsets.all(5.0),
                       child: Center(
-                          child: Text(
-                        content[index - 1],
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 9),
+                          child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          for (int i = 0; i < content[index - 1].length; ++i)
+                            Text(
+                              content[index - 1][i],
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: index == 4
+                                      ? 7
+                                      : index == 7
+                                          ? 8
+                                          : 9),
+                            )
+                        ],
                       )),
                     ),
         ),
@@ -116,8 +124,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 195, 47, 36),
       appBar: new AppBar(
-        title: new Text("The Moorish America"),
+        elevation: 0,
+        title: new Text("Moorish American University"),
         backgroundColor: Colors.red,
       ),
       body: Stack(children: list()),
