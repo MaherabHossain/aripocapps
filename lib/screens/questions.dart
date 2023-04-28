@@ -121,6 +121,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("101 Questions"),
+        backgroundColor: Colors.red,
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -138,11 +139,13 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
   Widget _buildQuestions(question, index) {
     return ExpansionTile(
+      iconColor: Colors.red,
+      textColor: Colors.red,
       title: Row(
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.red,
               borderRadius: BorderRadius.all(Radius.circular(50)),
             ),
             child: Container(

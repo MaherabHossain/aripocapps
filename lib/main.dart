@@ -1,5 +1,6 @@
 import 'package:arepocapps/screens/home.dart';
 import 'package:arepocapps/screens/questions.dart';
+import 'package:arepocapps/screens/support/support_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: BottomNavigationExample(),
     );
@@ -53,15 +54,7 @@ class _BottomNavigationExampleState extends State {
     Center(
       child: Text("Contact"),
     ),
-    Center(
-      child: Text("Settings"),
-    ),
-    Center(
-      child: Text("Settings"),
-    ),
-    Center(
-      child: Text("Settings"),
-    ),
+    SupportView(),
   ];
 
   _changeTab(int index) {
