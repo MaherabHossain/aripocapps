@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:arepocapps/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -70,7 +71,7 @@ class _SupportViewState extends State<SupportView> {
               SizedBox(
                 height: 10,
               ),
-              Text("moorishamericanuniversity@proton.me")
+              Text(AppConstants.contactEamil)
             ],
           ),
         ),
