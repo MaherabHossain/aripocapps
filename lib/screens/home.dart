@@ -1,3 +1,4 @@
+import 'package:arepocapps/screens/amarican_player/americaan_player_view.dart';
 import 'package:arepocapps/screens/questions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -56,6 +57,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _radialListItem(double angle, int index) {
+    print(index);
     final x = cos(angle) * radius;
     final y = sin(angle) * radius;
     List<dynamic> content = [
@@ -68,16 +70,27 @@ class _HomePageState extends State<HomePage> {
       ["The", "Koran", "Questionnaire"],
       ["The Holy", "Koran"],
     ];
-    return InkWell(
-      onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => QuestionsScreen()));
-      },
-      child: Center(
-        child: Transform(
-          transform: index == 1
-              ? Matrix4.translationValues(0.0, 0.0, 0.0)
-              : Matrix4.translationValues(x, y, 0.0),
+    List<dynamic> onTap = [
+      QuestionsScreen(),
+      QuestionsScreen(),
+      AmericalPlayerView(),
+      QuestionsScreen(),
+      QuestionsScreen(),
+      QuestionsScreen(),
+    ];
+    return Center(
+      child: Transform(
+        transform: index == 1
+            ? Matrix4.translationValues(0.0, 0.0, 0.0)
+            : Matrix4.translationValues(x, y, 0.0),
+        child: InkWell(
+          onTap: () {
+            print(index);
+            if (index != 1 && index != 2) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => onTap[index - 3]));
+            }
+          },
           child: Container(
             height: index == 1 ? 170 : 63,
             width: index == 1 ? 170 : 63,

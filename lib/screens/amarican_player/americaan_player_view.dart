@@ -16,6 +16,32 @@ class _AmericalPlayerViewState extends State<AmericalPlayerView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppConstants.americanPlayerTitle),
+        backgroundColor: AppConstants.appBarColor,
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                Text(
+                  AppConstants.americanPlayerTitle,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  AppConstants.americaPlayerDdescription,
+                  style: TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
